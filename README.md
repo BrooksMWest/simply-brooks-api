@@ -1,6 +1,6 @@
 # Self-Assess Your Django Competencies
 
-## 🐟 Tuna Piano API
+## Simply Brooks API
 
 This API enables developers to create applications that provide song recommendations based on genre. It manages non-user specific data, including artists, their songs, and the associated genre for each song.
 
