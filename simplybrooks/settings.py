@@ -39,14 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
-    'corsheaders'
+    'corsheaders',
     'simplybrooksapi',
 ]
 
 # THIS IS NEW
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
-    'http://127.0.0.1:3000'
+    'http://127.0.0.1:3000',
 )
 
 MIDDLEWARE = [
@@ -60,7 +60,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'tunapiano.urls'
+ROOT_URLCONF = 'simplybrooks.urls'
 
 TEMPLATES = [
     {
@@ -78,7 +78,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'tunapiano.wsgi.application'
+WSGI_APPLICATION = 'simplybrooks.wsgi.application'
 
 
 # Database

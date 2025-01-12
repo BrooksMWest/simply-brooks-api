@@ -1,27 +1,27 @@
 [
   {
-      "model": "simplybooksapi.genre",
+      "model": "simplybrooksapi.genre",
       "pk": 1,
       "fields": {
           "genre": "Historical Fiction"
       }
   },
   {
-    "model": "simplybooksapi.genre",
+    "model": "simplybrooksapi.genre",
     "pk": 2,
     "fields": {
         "genre": "Comedy"
     }
 },
 {
-  "model": "simplybooksapi.genre",
+  "model": "simplybrooksapi.genre",
   "pk": 3,
   "fields": {
       "genre": "Classical Literature"
   }
 },
 {
-  "model": "simplybooksapi.genre",
+  "model": "simplybrooksapi.genre",
   "pk": 4,
   "fields": {
       "genre": "Art"

@@ -1,6 +1,6 @@
 from django.db import models
 
-class Author(models.model):
+class Author(models.Model):
 
   email = models.CharField(max_length=75)
   favorite = models.BooleanField()
