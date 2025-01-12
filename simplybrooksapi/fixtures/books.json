@@ -1,0 +1,42 @@
+[
+  {
+      "model": "simplybrooksapi.book",
+      "pk": 1,
+      "fields": {
+          "author_id": "1",
+          "description": "This is such an awesome book!",
+          "image": "https://images-na.ssl-images-amazon.com/images/I/81rRRmZZvZL.jpg",
+          "price": "39.99",
+          "sale": true,
+          "title": "The Totally awesome book",
+          "uid": "vRnMCReJzUPsStN6xWeyOcOwJ793"
+      }
+  },
+  {
+      "model": "simplybrooksapi.book",
+      "pk": 2,
+      "fields": {
+          "author_id": "2",
+          "description": "this book is pretty OK!",
+          "image": "https://images-na.ssl-images-amazon.com/images/I/81rRRmZZvZL.jpg",
+          "price": "6.99",
+          "sale": false,
+          "title": "The Totally awesome book",
+          "uid": "vRnMCReJzUPsStN6xWeyOcOwJ793"
+      }
+  },
+  {
+    "model": "simplybrooksapi.book",
+    "pk": 3,
+    "fields": {
+          "author_id": "3",
+          "description": "A young kid gets lost on the subway! Very scary!",
+          "image": "https://images-na.ssl-images-amazon.com/images/I/81rRRmZZvZL.jpg",
+          "price": "39.99",
+          "sale": true,
+          "title": "The Totally awesome book",
+          "uid": "vRnMCReJzUPsStN6xWeyOcOwJ793"
+      }
+    
+}
+]

@@ -1,0 +1,46 @@
+[
+  {
+      "model": "simplybrooksapi.author",
+      "pk": 1,
+      "fields": {
+          "email": "bobby@styles.com",
+          "favorite": true,
+          "first_name": "Bobby",
+          "last_name": "Styles",
+          "uid": "vRnMCReJzUPsStN6xWeyOcOwJ793"
+      }
+  },
+  {
+    "model": "simplybrooksapi.author",
+    "pk": 2,
+    "fields": {
+        "email": "Jay@mcMurtry.com",
+        "favorite": false,
+        "first_name": "Jay",
+        "last_name": "McMurtry",
+        "uid": "vRnMCReJzUPsStN6xWeyOcOwJ793"
+    }
+},
+{
+  "model": "simplybrooksapi.author",
+  "pk": 3,
+  "fields": {
+      "email": "Toby@McBroby",
+      "favorite": true,
+      "first_name": "Toby",
+      "last_name": "McBroby",
+      "uid": "vRnMCReJzUPsStN6xWeyOcOwJ793"
+  }
+},
+{
+  "model": "simplybrooksapi.author",
+  "pk": 4,
+  "fields": {
+      "email": "julie@Badoolie.com",
+      "favorite": false,
+      "first_name": "Julie",
+      "last_name": "Badoolie",
+      "uid": "vRnMCReJzUPsStN6xWeyOcOwJ793"
+  }
+}
+]
