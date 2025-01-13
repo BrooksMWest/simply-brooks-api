@@ -6,7 +6,7 @@ from rest_framework import serializers, status
 from simplybrooksapi.models import Genre
 
 
-class GameTypeView(ViewSet):
+class GenreView(ViewSet):
     """Level up genres view"""
 
     def retrieve(self, request, pk):

@@ -1,22 +1,20 @@
-"""View module for handling requests about game types"""
+"""View module for handling requests about books"""
 from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from simplybrooksapi.models import Book
-from simplybrooksapi.models import Author
-from simplybrooksapi.models import Genre
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
 
 class BookView(ViewSet):
-    """Level up game view"""
+    """Level up book view"""
 
     def retrieve(self, request, pk):
-        """Handle GET requests for single game
+        """Handle GET requests for single book
 
         Returns:
-            Response -- JSON serialized game
+            Response -- JSON serialized book
         """
         book = Book.objects.get(pk=pk)
         serializer = BookSerializer(book)

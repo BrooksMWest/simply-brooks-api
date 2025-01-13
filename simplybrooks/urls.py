@@ -1,3 +1,13 @@
+from django.conf.urls import include
+from rest_framework import routers
+from simplybrooksapi.views import BookView
+from simplybrooksapi.views import AuthorView
+from simplybrooksapi.views import GenreView
+from django.urls import path
+from django.contrib import admin
+from django.contrib import admin
+from django.urls import path
+
 """simplybrooks URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -13,9 +23,13 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path
+
+router = routers.DefaultRouter(trailing_slash=False)
+router.register(r'genres', GenreView, 'genre')
+router.register(r'books', BookView, 'book')
+router.register(r'authors', AuthorView, 'author')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include(router.urls)),
 ]
