@@ -74,18 +74,19 @@ class BookView(ViewSet):
            Response -- Empty body with 204 status code or error message
         """
         try:
-            book = Book.objects.create(
-                author_id=request.data["author_id"],
-                description=request.data["description"],  # Ensure the key matches your frontend
-                image=request.data["image"],
-                price=request.data["price"],
-                sale=request.data["sale"],
-                title=request.data["title"],
-                uid=request.data["uid"]
-            )     
+            book = Book.objects.get(pk=pk)
+            book.author_id=request.data["author_id"]
+            book.description=request.data["description"]  # Ensure the key matches your frontend
+            book.image=request.data["image"]
+            book.price=request.data["price"]
+            book.sale=request.data["sale"]
+            book.title=request.data["title"]
+            book.uid=request.data["uid"]   
             book.save()
 
-            return Response(None, status=status.HTTP_204_NO_CONTENT)
+            serializer = BookSerializer(book)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+
         except Book.DoesNotExist:
             raise Http404("Book not found")
         except KeyError as e:
