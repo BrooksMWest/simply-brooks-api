@@ -32,71 +32,74 @@ class BookView(ViewSet):
         serializer = BookSerializer(books, many=True)
         return Response(serializer.data)
 
-def create(self, request):
-    """Handle POST operations
+    
+    def create(self, request):
+        """Handle POST operations
 
-    Returns:
-        Response -- JSON serialized book instance or error message
-    """
-    try:
-        # Create the book instance with validated data
-        book = Book.objects.create(
-            author_id=request.data["author_id"],
-            description=request.data["description"],  # Ensure the key matches your frontend
-            image=request.data["image"],
-            price=request.data["price"],
-            sale=request.data["sale"],
-            title=request.data["title"],
-            uid=request.data["uid"]
-        )
+        Returns:
+            Response -- JSON serialized book instance or error message
+        """
+        try:
+            # Create the book instance with validated data
+            book = Book.objects.create(
+                author_id = request.data["author_id"],
+                description=request.data["description"],  # Ensure the key matches your frontend
+                image=request.data["image"],
+                price=request.data["price"],
+                sale=request.data["sale"],
+                title=request.data["title"],
+                uid=request.data["uid"]
+            )
 
-        # Serialize and return the new book
-        serializer = BookSerializer(book)
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-
-    except KeyError as e:
+            # Serialize and return the new book
+            serializer = BookSerializer(book)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        except KeyError as e:
         # Handle missing fields
-        return Response({"error": f"Missing field: {str(e)}"}, status=status.HTTP_400_BAD_REQUEST)
-
-    except ObjectDoesNotExist:
+            return Response({"error": f"Missing field: {str(e)}"}, status=status.HTTP_400_BAD_REQUEST)
+        except ObjectDoesNotExist:
         # Handle foreign key errors or other object issues
-        return Response({"error": "Author or related object not found."}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"error": "Author or related object not found."}, status=status.HTTP_400_BAD_REQUEST)
 
-    except Exception as e:
+        except Exception as e:
         # Catch-all for any other errors
-        return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     
 
-def update(self, request, pk):
-    """Handle PUT requests for a book
+    def update(self, request, pk):
+        """Handle PUT requests for a book
 
-    Returns:
-        Response -- Empty body with 204 status code or error message
-    """
-    try:
-        book = Book.objects.create(
-        author_id=request.data["author_id"],
-        description=request.data["description"],  # Ensure the key matches your frontend
-        image=request.data["image"],
-        price=request.data["price"],
-        sale=request.data["sale"],
-        title=request.data["title"],
-        uid=request.data["uid"]
-        )     
-        book.save()
+        Returns:
+           Response -- Empty body with 204 status code or error message
+        """
+        try:
+            book = Book.objects.create(
+                author_id=request.data["author_id"],
+                description=request.data["description"],  # Ensure the key matches your frontend
+                image=request.data["image"],
+                price=request.data["price"],
+                sale=request.data["sale"],
+                title=request.data["title"],
+                uid=request.data["uid"]
+            )     
+            book.save()
 
-        return Response(None, status=status.HTTP_204_NO_CONTENT)
-    except Book.DoesNotExist:
-        raise Http404("Book not found")
-    except KeyError as e:
+            return Response(None, status=status.HTTP_204_NO_CONTENT)
+        except Book.DoesNotExist:
+            raise Http404("Book not found")
+        except KeyError as e:
             return Response({"error": f"Missing field: {str(e)}"}, status=status.HTTP_400_BAD_REQUEST)
+        
+    def destroy(self, request, pk):
+        book = Book.objects.get(pk=pk)
+        book.delete()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
 
         
 
-
 class BookSerializer(serializers.ModelSerializer):
-    """JSON serializer for game types
+    """JSON serializer for book types
     """
     class Meta:
         model = Book
