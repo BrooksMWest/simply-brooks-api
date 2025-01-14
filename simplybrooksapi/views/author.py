@@ -72,13 +72,12 @@ class AuthorView(ViewSet):
             Response -- Empty body with 204 status code or error message
         """
         try:
-            author = Author.objects.create(
-            email=request.data["email"],
-            favorite=request.data["favorite"],  # Ensure the key matches your frontend
-            first_name=request.data["first_name"],
-            last_name=request.data["last_name"],
-            uid=request.data["uid"]
-            )     
+            author = Author.objects.get(pk=pk)
+            author.email=request.data["email"]
+            author.favorite=request.data["favorite"]  
+            author.first_name=request.data["first_name"]
+            author.last_name=request.data["last_name"]
+            author.uid=request.data["uid"]   
             author.save()
 
             return Response(None, status=status.HTTP_204_NO_CONTENT)
@@ -86,6 +85,11 @@ class AuthorView(ViewSet):
             raise Http404("Author not found")
         except KeyError as e:
             return Response({"error": f"Missing field: {str(e)}"}, status=status.HTTP_400_BAD_REQUEST)
+        
+    def destroy(self, request, pk):
+        author = Author.objects.get(pk=pk)
+        author.delete()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
 
 class AuthorSerializer(serializers.ModelSerializer):
     """JSON serializer for authors
