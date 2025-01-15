@@ -29,6 +29,11 @@ class BookView(ViewSet):
         """
         books = Book.objects.all()
 
+        genre = request.query_params.get('genre', None)
+        if genre is not None:
+            books = books.filter(genre_id=genre)
+
+
         serializer = BookSerializer(books, many=True)
         return Response(serializer.data)
 
@@ -75,7 +80,7 @@ class BookView(ViewSet):
         """
         try:
             book = Book.objects.get(pk=pk)
-            book.author_id=request.data["author_id"]
+            book.author=request.data["author_id"]
             book.description=request.data["description"]  # Ensure the key matches your frontend
             book.image=request.data["image"]
             book.price=request.data["price"]

@@ -1,7 +1,8 @@
 from django.db import models
+from .author import Author
 class Book(models.Model):
 
-  author_id = models.CharField(max_length=50)
+  author = models.ForeignKey(Author, on_delete=models.CASCADE)
   description = models.TextField()
   image = models.CharField(max_length=150)
   price = models.CharField(max_length=50)
