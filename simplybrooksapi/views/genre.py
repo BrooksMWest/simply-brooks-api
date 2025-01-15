@@ -62,17 +62,25 @@ class GenreView(ViewSet):
         
 
     def update(self, request, pk):
-        """Handle PUT requests for a game
+        """Handle PUT requests for a genre"""
 
-        Returns:
-            Response -- Empty body with 204 status code
-        """
-        genre = Genre.objects.get(pk=pk)
-        genre.genre = request.data["genre"]
+        try:
+           genre = Genre.objects.get(pk=pk)
+        
+            # Update the genre field
+           genre.genre = request.data.get("genre", genre.genre)  # Use the existing value if the field is not provided
 
-        genre.save()
+           genre.save()
 
-        return Response(None, status=status.HTTP_204_NO_CONTENT)
+           return Response(None, status=status.HTTP_204_NO_CONTENT)
+
+        except Genre.DoesNotExist:
+            return Response({"error": "Genre not found."}, status=status.HTTP_404_NOT_FOUND)
+        except KeyError as e:
+            return Response({"error": f"Missing field: {str(e)}"}, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
     
     def destroy(self, request, pk):
         event = Genre.objects.get(pk=pk)

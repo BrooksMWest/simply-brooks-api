@@ -3,6 +3,7 @@ from rest_framework import routers
 from simplybrooksapi.views import BookView
 from simplybrooksapi.views import AuthorView
 from simplybrooksapi.views import GenreView
+from simplybrooksapi.views import BookGenreView
 from django.urls import path
 from django.contrib import admin
 from django.contrib import admin
@@ -28,6 +29,7 @@ router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'genres', GenreView, 'genre')
 router.register(r'books', BookView, 'book')
 router.register(r'authors', AuthorView, 'author')
+router.register(r'bookGenres', BookGenreView, 'bookGenre' )
 
 urlpatterns = [
     path('admin/', admin.site.urls),

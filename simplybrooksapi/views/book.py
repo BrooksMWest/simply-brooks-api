@@ -4,6 +4,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from simplybrooksapi.models import Book
+from simplybrooksapi.models import Author
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
 
@@ -29,9 +30,9 @@ class BookView(ViewSet):
         """
         books = Book.objects.all()
 
-        genre = request.query_params.get('genre', None)
-        if genre is not None:
-            books = books.filter(genre_id=genre)
+        author = request.query_params.get('author', None)
+        if author is not None:
+            books = books.filter(author=author)
 
 
         serializer = BookSerializer(books, many=True)
@@ -80,7 +81,15 @@ class BookView(ViewSet):
         """
         try:
             book = Book.objects.get(pk=pk)
-            book.author=request.data["author_id"]
+
+            author_id = request.data.get("author_id")
+            if author_id:
+                try:
+                    author = Author.objects.get(pk=author_id)
+                    book.author = author
+                except Author.DoesNotExist:
+                    return Response({"error": "Invalid author_id, author not found."}, status=status.HTTP_400_BAD_REQUEST)
+            book.author = author
             book.description=request.data["description"]  # Ensure the key matches your frontend
             book.image=request.data["image"]
             book.price=request.data["price"]
