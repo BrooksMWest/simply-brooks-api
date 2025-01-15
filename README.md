@@ -2,9 +2,7 @@
 
 ## Simply Brooks API
 
-This API enables developers to create applications that provide song recommendations based on genre. It manages non-user specific data, including artists, their songs, and the associated genre for each song.
-
-Let's make millions! 💰 💰 💰
+This API enables developers to create applications that provide information about books for sale on a website. it allows access to a wide variety of information on books, authors, and literary genres.
 
 ### Setup
 
@@ -29,39 +27,44 @@ These are all the available routes for this API. Each route has an associated ti
   - JSON body (if applicable).
   - Status code.
 
-#### 🎶 Songs
+#### Books
 
-- [Create a Song](./documentation/issue-tickets/Create-Song.md)
-- [Delete a Song](./documentation/issue-tickets/Delete-Song.md)
-- [Update a Song](./documentation/issue-tickets/Update-Song.md)
-- [View a List of all the Songs](./documentation/issue-tickets/List-Songs.md)
-- [Details view of a single Song and its associated genres and artist details](./documentation/issue-tickets/Details-Song.md)
+- [Create a Book]
+- [Delete a Book]
+- [Update a Book]
+- [View a List of all the Books]
+- [Details view of a single Book and its associated genres and author details]
 
-#### 👩🏾‍🎤 Artists
+#### Authors
 
-- [Create an Artist](./documentation/issue-tickets/Create-an-Artist.md)
-- [Delete an Artist](./documentation/issue-tickets/Delete-an-Artist.md)
-- [Update an Artist](./documentation/issue-tickets/Update-an-Artist.md)
-- [View a List of all the Artists](./documentation/issue-tickets/List-Artists.md)
-- [Details view of a single Artist and the songs associated with them](./documentation/issue-tickets/Details-Artist.md)
+- [Create an Author]
+- [Delete an Author]
+- [Update an Author]
+- [View a List of all the Authors]
+- [Details view of a single author and the Books associated with them]
 
-#### 🎸 Genres
+#### Genres
 
-- [Create a Genre](./documentation/issue-tickets/Create-Genre.md)
-- [Delete a Genre](./documentation/issue-tickets/Delete-Genre.md)
-- [Update a Genre](./documentation/issue-tickets/Update-Genre.md)
-- [View a List of all the Genres](./documentation/issue-tickets/List-Genres.md)
-- [Details view of a single Genre and the songs associated with it](./documentation/issue-tickets/Details-Genre.md)
+- [Create a Genre]
+- [Delete a Genre]
+- [Update a Genre]
+- [View a List of all the Genres]
+- [Details view of a single Genre and the Books associated with it]
 
 ### Stretch Goals
 
 These are examples of stretch goals that you can tackle once you have been MVP approved for the above features!
 
 - Plan and Build the Frontend for the MVP routes
-- [Popular genres: Retrieve a list of genres based on the number of associated songs](./documentation/issue-tickets/Popular-genres.md)
-- [Related artists: Retrieve artists with similar genres](./documentation/issue-tickets/Related-artists.md)
-- [Search songs by genre](./documentation/issue-tickets/Search-songs-by-genre.md)
-- [Search artists by genre](./documentation/issue-tickets/Search-artists.md)
+- [Popular genres: Retrieve a list of genres based on the number of associated Books](./documentation/issue-tickets/Popular-genres.md)
+- [Related author
+s: Retrieve author
+s with similar genres](./documentation/issue-tickets/Related-author
+s.md)
+- [Search Books by genre](./documentation/issue-tickets/Search-Books-by-genre.md)
+- [Search author
+s by genre](./documentation/issue-tickets/Search-author
+s.md)
 - Search all entities by (name/title/description)
 
 ## Data Design
